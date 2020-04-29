@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+body {
+	background-color: whitesmoke;
+}
+
+.whitebox {
+	margin: 2% auto;
+	padding-top: 2%;
+	padding-bottom: 4%; 
+	border: inset;
+	border-radius: 15px;
+	width: 70%;
+	background-color: white;
+}
+
+.whitebox h2 {
+	color: black;
+	text-align: center;
+}
+
+.whitebox table {
+	border: outset;
+	border-collapse: collapse;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.whitebox tr {
+	border: 1px solid gray;
+}
+
+.whitebox table th {
+	width: 30%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	background: gainsboro;
+	color: black;	
+}
+
+.whitebox table td {
+	width: 50%;
+	background-color: whitesmoke;
+	padding-left: 3%;
+}
+
+.mail {
+	font-size: 1px;
+}
+
+.whitebox a {
+	color: green;
+	float: right;
+	margin-right: 3%;
+}
+
+.whitebox button {
+	float: right;
+	margin-top: 2%;
+	margin-right: 15%;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" th:href="@{/css/my_page.css}" href="/css/my_page.css"  />
+
+<title>Book shop</title>
+</head>
+<body>
+
+<header th:insert="fragments/page_header::fragment_header"></header>
+
+<main>
+	<div class="whitebox">
+	
+		<h2>マイページ</h2>
+		
+		<table border="1" >
+			<tr>
+				<th>氏名</th>
+			    <td>
+			    	<span class="familyName"  th:text="${user.familyName}"></span>
+			    	<span class="firstName"   th:text="${user.firstName}" ></span>
+			    </td>
+			</tr>
+			<tr>
+				<th>氏名ふりがな</th>
+				<td>
+					<span class="familyNameKana" th:text="${user.familyNameKana}"></span>
+					<span class="firstNameKana" th:text="${user.firstNameKana}"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>性別</th>
+				<td>
+					<span class="gender" th:text="${user.gender == 0 ? '男性' : '女性'}" ></span>
+				</td>
+			</tr>
+			<tr>
+				<th>ユーザー名<br><span class="mail">(メールアドレス)</span></th>
+				<td>
+					<span class="userName" th:text="${user. userName}"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<span class="password"></span><a href="#" class="resetPassword">再設定</a>
+					<input type="hidden" id="hiddenPassword" th:value="${user.password}" />
+				</td>
+			</tr>
+		</table>
+		
+		<form action="/peace/history/">
+			<button type="submit" >購入履歴</button>
+		</form>
+	
+	</div>
+	
+	<div th:insert="fragments/dialog_reset_password::dialogResetPassword"></div>
+	
+</main>
+<script>
+$(() => {
+	
+	//パスワードを*表示
+	let password = $('#hiddenPassword').val();
+	let asters = '';
+	for (let i = 0; i < password.length; i++) {
+		asters += '*';
+	}
+	$('span.password').text(asters);
+	
+	//ダイアログ初期設定
+  	$('#resetPassword').dialog(dialogConfig.resetPassword);
+	
+	//ダイアログ表示
+    $('a.resetPassword').on('click', (e) => {
+  		$("#resetPassword").dialog("open");
+  	});
+});
+</script>
+
+</body>
+</html>
